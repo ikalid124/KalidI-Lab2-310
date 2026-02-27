@@ -1,11 +1,8 @@
-
-.section .bss
-ram: .space 256
-
 .section .text
-.global _start
+.global task1_run
+.extern ram
 
-_start:
+task1_run:
     movb $0xFF, ram+0x50
     movb $0xFF, ram+0x51
     movb $0xFF, ram+0x52
@@ -15,8 +12,5 @@ _start:
     movb $0xFF, ram+0x56
     movb $0xFF, ram+0x57
     movb $0xFF, ram+0x58
-
-    mov $60, %rax
-    xor %rdi, %rdi
-    syscall
+    ret
     

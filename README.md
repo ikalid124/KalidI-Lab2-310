@@ -1,51 +1,59 @@
 # Lab 1
-## Compile
-gcc -nostdlib -no-pie hello.s -o hello
-## Run
-./hello
 
-## Task 1
+## Tasks
+
+### Task 1
 Store FFH into RAM locations 50H to 58H using direct addressing mode.
 
-## Task 2
+### Task 2
 Store FFH into RAM locations 50H to 58H using indirect addressing mode.
 
-## Task 3
-A program to clear RAM locations starting at RAM address 50H to 58H 
+### Task 3
+Clear RAM locations from 50H to 58H by storing 00H.
 
-## Task 4
-A program for the series 1+2+3+….+N (N=10) and put the sum into memory location 50H
-
+### Task 4
+Compute the series 1+2+3+…+N (N=10) and store the sum into memory location 50H.
 
 ---
 
-## Compile
+## Files
 
-### Task 1
-gcc -nostdlib -no-pie task1.s -o task1
+task1.s  
+task2.s  
+task3.s  
+task4.s  
+test.c  
 
-### Task 2
-gcc -nostdlib -no-pie task2.s -o task2
+---
 
+## Compile (All Tasks with C Driver)
 
-### Task 3
-gcc -nostdlib -no-pie task3.s -o task3
-
-### Task 4
-gcc -nostdlib -no-pie task4.s -o task4
+gcc -no-pie -O0 test.c task1.s task2.s task3.s task4.s -o test
 
 ---
 
 ## Run
 
-### Task 1
-./task1
+./test
 
-### Task 2
-./task2
+---
 
-### Task 3
-./task3
+## Expected Output
 
-### Task 4
-./task4
+After Task 1:
+ram[50] = 0xFF
+...
+ram[58] = 0xFF
+
+After Task 2:
+ram[50] = 0xFF
+...
+ram[58] = 0xFF
+
+After Task 3:
+ram[50] = 0x00
+...
+ram[58] = 0x00
+
+After Task 4:
+ram[50] = 0x37 (55)

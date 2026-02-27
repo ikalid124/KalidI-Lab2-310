@@ -1,12 +1,9 @@
-.section .bss
-ram: .space 256
-
 .section .text
-.global _start
-_start:
+.global task3_run
+.extern ram
 
-    mov $ram, %rsi
-    add $0x50, %rsi
+task3_run:
+    lea ram+0x50(%rip), %rsi   # RSI = &ram[0x50]
 
     movb $0x00, (%rsi)
     inc %rsi
@@ -26,6 +23,5 @@ _start:
     inc %rsi
     movb $0x00, (%rsi)
 
-    mov $60, %rax
-    xor %rdi, %rdi
-    syscall
+    ret
+    
